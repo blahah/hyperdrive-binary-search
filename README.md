@@ -4,6 +4,8 @@ Find files by name in a [hyperdrive](https://github.com/mafintosh/hyperdrive), u
 
 This implementation has no dependencies, and is a tiny port of the [binary-search](https://www.npmjs.com/package/binary-search) package to work with hyperdrive archives.
 
+[![Travis](https://img.shields.io/travis/blahah/hyperdrive-binary-search.svg?style=flat-square)](https://travis-ci.org/blahah/hyperdrive-binary-search)
+
 ### Usage
 
 ```js
