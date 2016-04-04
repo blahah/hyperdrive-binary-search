@@ -28,27 +28,36 @@ tape('search for a file', function (t) {
       clone.ready(function (err) {
         if (err) throw err
 
+        notfiles = ['nonsense.12345', 'i.do.not.exist']
+        ndone = 0
+        var done = function() {
+          ndone += 1
+          if (ndone == notfiles.length + files.length){
+            console.log('done')
+            t.end()
+          }
+        }
+
         // real files should be correctly found
         files.forEach((file) => {
           search(clone, file, (err, entry) => {
 
             t.error(err, 'no error')
             t.same(entry.name, file)
+            done()
 
           })
-
         })
 
         // non-existent files shouldn't be found
-        notfiles = ['nonsense.12345', 'i.do.not.exist']
         notfiles.forEach((file) => {
           search(clone, file, (err, entry) => {
 
             t.error(err, 'no error')
             t.same(entry, null)
+            done()
 
           })
-
         })
 
       })
@@ -69,7 +78,6 @@ tape('search for a file', function (t) {
 
       })
     })
-
   })
 
   var p1 = drive.createPeerStream()
