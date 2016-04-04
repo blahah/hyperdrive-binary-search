@@ -56,24 +56,20 @@ tape('search for a file', function (t) {
   }
 
   glob('*.*', (err, files) => {
-
     if (err) throw err
 
     ndone = 0
 
     files.forEach((file) => {
       archive.appendFile(file, function (err) {
-
         if (err) throw err
 
         ndone += 1
-
         if (ndone == files.length) searchAll(files)
 
       })
     })
 
-    console.log(files)
   })
 
   var p1 = drive.createPeerStream()
